@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - FarmLab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <!-- Такая же навигация как в других файлах -->
+    </nav>
+    
+    <div class="container">
+        <main class="main">
+            <h1 class="main__title">Регистрация пациента</h1>
+            
+            <div class="auth-form-container">
+                <form id="registrationForm" class="form">
+                    <div class="form__group">
+                        <label for="username" class="form__label">Логин:</label>
+                        <input type="text" id="username" name="username" class="form__input" required>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="email" class="form__label">Email:</label>
+                        <input type="email" id="email" name="email" class="form__input" required>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label for="password" class="form__label">Пароль:</label>
+                        <input type="password" id="password" name="password" class="form__input" required>
+                    </div>
+                    
+                    <div class="form__group">
+                        <label class="form__checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" class="form__checkbox" required>
+                            <span class="form__checkbox-text">Согласие на обработку данных</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="form__button">Зарегистрироваться</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <!-- Футер -->
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
