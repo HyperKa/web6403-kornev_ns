@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - FarmLab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/1998/1998592.png" alt="Логотип FarmLab" class="nav__logo-image">
+                <span class="nav__logo-text">FarmLab</span>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                <li class="nav__item"><a href="doctors.html" class="nav__link">Врачи</a></li>
+                <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <main class="main">
+            <h1 class="main__title">Запись на прием</h1>
+            
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <h2 class="contact-info__title">Контактная информация</h2>
+                    <div class="contact-info__item">
+                        <strong>Адрес:</strong> г. Москва, ул. Центральная, д. 1
+                    </div>
+                    <div class="contact-info__item">
+                        <strong>Телефон:</strong> <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                    </div>
+                    <div class="contact-info__item">
+                        <strong>Email:</strong> <a href="mailto:info@farmlab.com">info@farmlab.com</a>
+                    </div>
+                    <div class="contact-info__item">
+                        <strong>График работы:</strong> Пн-Вс: 8:00-22:00
+                    </div>
+                    
+                    <!-- Анимация -->
+                    <div class="medical-animation">
+                        <div class="medical-animation__pulse"></div>
+                        <div class="medical-animation__wave medical-animation__wave--1"></div>
+                        <div class="medical-animation__wave medical-animation__wave--2"></div>
+                        <div class="medical-animation__wave medical-animation__wave--3"></div>
+                        <div class="medical-animation__icon">❤️</div>
+                    </div>
+                </div>
+
+                <div class="appointment-form">
+                    <h2 class="appointment-form__title">Форма записи</h2>
+                    <form id="appointmentForm" class="form">
+                        <div class="form__group">
+                            <label for="fullName" class="form__label">ФИО:</label>
+                            <input type="text" id="fullName" name="fullName" class="form__input" required>
+                            <span class="form_error" id="fullNameError"></span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="phone" class="form__label">Телефон:</label>
+                            <input type="tel" id="phone" name="phone" class="form__input" required>
+                            <span class="form_error" id="phoneError"></span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email:</label>
+                            <input type="email" id="email" name="email" class="form__input" required>
+                            <span class="form_error" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="specialty" class="form__label">Специализация врача:</label>
+                            <select id="specialty" name="specialty" class="form__select">
+                                <option value="">Выберите специализацию</option>
+                                <option value="cardiologist">Кардиолог</option>
+                                <option value="therapist">Терапевт</option>
+                                <option value="surgeon">Хирург</option>
+                                <option value="neurologist">Невролог</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="date" class="form__label">Желаемая дата:</label>
+                            <input type="date" id="date" name="date" class="form__input" required>
+                            <span class="form_error" id="dateError"></span>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" id="insurance" name="insurance" class="form__checkbox">
+                                <span class="form__checkbox-text">Использовать страховку</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter" class="form__checkbox">
+                                <span class="form__checkbox-text">Подписаться на медицинские новости</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" class="form__checkbox" required>
+                                <span class="form__checkbox-text">Я согласен на обработку персональных данных</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="form__button">Записаться на прием</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">&copy; 2025 Медицинский центр FarmLab. Ваше здоровье — наша профессия.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

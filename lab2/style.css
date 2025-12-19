@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fa;              
+    color: #333;
+    margin: 0px;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px; 
+    margin: 0 auto;                           
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;                         /* Темно-синий для заголовков */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;                            
+    border-top: 1px solid #e0e0e0;          /* Светло-серая линия */
+    margin: 40px 0;
+}
+
+
+header {
+    background-color: #34495e;               /* серо-синий */
+    /* background-color: #b1891d; */           /* Золотистый */
+    color: white;
+    padding: 15px 0px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.5);
+}
+
+/* Селектор тега (h1 внутри header) */
+header h1 {
+    margin: 0;
+    color: white;
+    font-size: 22px;                          /* Размер шрифта */
+}
+
+/* Селектор тега (a внутри nav) */
+nav a {
+    color: white;
+    margin: 0 15px;                           /* выпендрежная конструкция с двумя параметрами */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;              /* ease - лавный переход цвета при наведении */
+}
+
+nav a:hover {
+    color: #3498db;                         /* Светло-синий при наведении */
+}
+
+
+/* Селектор класса (.data-table) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;                /* Убираем двойные границы */
+    margin: 25px 0;                             
+    font-size: 14px;
+    border-radius: 20px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);       
+}
+
+.data-table thead tr {
+    background-color: #2c3e50;
+    color: #ffffff;
+    text-align: left;                         /* Выравнивание по левому краю для заголовков */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;                       /* Отступы внутри ячеек */
+}
+
+.data-table tbody tr {
+    border-bottom: 1px solid #2b9c34;       /* граница между строками */
+}
+
+/* Выравнивание по левому краю (по умолчанию для ячеек) */
+.data-table tbody td {
+    text-align: left;
+}
+
+/* Класс для выравнивания по центру */
+.align-center {
+    text-align: center;
+}
+
+/* "Зебра" style для строк таблицы */
+.data-table tbody tr:nth-of-type(2n) {
+    background-color: #f3f3f3;
+}
+
+/* Последняя строка таблицы */
+.data-table tbody tr:last-of-type {
+    border-bottom: 2px solid #2c3e50;
+}
+
+.info-block {
+    background-color: #eaf2f8;
+    border: 2px dashed red;
+    border-left: 10px solid #3498db;
+    padding: 15px;                          /* Отступы внутри блока */
+    margin: 20px 0px;             
+}
+
+.highlight {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    line-height: 1.5;                      /* Междустрочный интервал */
+}

@@ -1,0 +1,440 @@
+/* CSS переменные для медицинской темы */
+:root {
+    --primary-blue: #2c3e50;
+    --primary-green: #27ae60;
+    --accent-teal: #1abc9c;
+    --background: #ecf0f1;
+    --text-color: #2c3e50;
+    --white: #ffffff;
+    --highlight-bg: #f8f9fa;
+    --border-color: #bdc3c7;
+    --shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+/* Навигация */
+.nav {
+    background-color: var(--primary-blue);
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav__logo-image {
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: var(--transition);
+}
+
+.nav__logo-text {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav__link {
+    color: var(--white);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.nav__link:hover {
+    background-color: var(--accent-teal);
+}
+
+/* Основной контент */
+.main {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.main__title {
+    color: var(--primary-blue);
+    text-align: center;
+    border-bottom: 3px solid var(--primary-green);
+    padding-bottom: 15px;
+}
+
+.main__subtitle {
+    color: var(--primary-blue);
+    text-align: center;
+    border-bottom: 3px solid var(--primary-green);
+    padding-bottom: 15px;
+}
+
+/* FLEXBOX ВЕРСТКА (Главная страница) */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 40px 0;
+    padding: 30px;
+    background-color: var(--highlight-bg);
+    border-radius: 10px;
+}
+
+.hero__image-container {
+    flex: 1;
+}
+
+.hero__image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.hero__text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.advantages__card {
+    flex: 1 1 300px;
+    background-color: var(--highlight-bg);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.advantages__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.advantages__icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.advantages__title {
+    color: var(--primary-green);
+    margin: 15px 0;
+}
+
+/* GRID ВЕРСТКА (Страница врачей) */
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.doctor-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.doctor-card--feature {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.doctor-card__image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.doctor-card__content {
+    padding: 20px;
+}
+
+.doctor-card__name {
+    color: var(--primary-blue);
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.doctor-card__specialty {
+    color: var(--primary-green);
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.doctor-card__experience {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.doctor-card__icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* СТРАНИЦА КОНТАКТОВ */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.contact-info {
+    background-color: var(--highlight-bg);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.contact-info__title {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.contact-info__item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 4px;
+}
+
+.appointment-form {
+    background-color: var(--highlight-bg);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.appointment-form__title {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+/* ФОРМА */
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.form__input, .form__select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+
+.form__input:focus, .form__select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.3);
+}
+
+.form__checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form__checkbox {
+    margin-right: 10px;
+}
+
+.form__checkbox-text {
+    font-size: 0.9rem;
+}
+
+.form__button {
+    width: 100%;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 20px;
+}
+
+.form__button:hover {
+    background-color: var(--accent-teal);
+}
+
+/* АНИМАЦИЯ - Пульсирующее сердце с волнами */
+.medical-animation {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 40px auto;
+}
+
+.medical-animation__pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.medical-animation__wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--accent-teal);
+    border-radius: 50%;
+    animation: wave 3s infinite;
+}
+
+.medical-animation__wave--1 {
+    width: 100px;
+    height: 100px;
+    animation-delay: 0s;
+}
+
+.medical-animation__wave--2 {
+    width: 140px;
+    height: 140px;
+    animation-delay: 1s;
+}
+
+.medical-animation__wave--3 {
+    width: 180px;
+    height: 180px;
+    animation-delay: 2s;
+}
+
+.medical-animation__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    z-index: 2;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+@keyframes wave {
+    0% {
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+/* Футер */
+.footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav__list {
+        justify-content: center;
+    }
+    
+    .hero {
+        flex-direction: column;
+    }
+    
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages__card {
+        flex: 1 1 100%;
+    }
+}
