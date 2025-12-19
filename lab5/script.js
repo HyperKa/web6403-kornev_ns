@@ -24,28 +24,34 @@ class Appointment {
 document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
     
-    // Если мы на странице с формой, добавляем обработчики
+    // Если на странице с формой - добавить обработчиков!
+    // Если на странице contacts есть форма <form id="appointmentForm" class="form"> ? True : null
     if (appointmentForm) {
+        // создание ссылки на элемент поля ввода
         const fullNameInput = document.getElementById('fullName');
         const phoneInput = document.getElementById('phone');
         const emailInput = document.getElementById('email');
 
-        // --- ТРЕБОВАНИЕ 1: ДИНАМИЧЕСКАЯ ВАЛИДАЦИЯ ---
-        
+        // Динамическая валидация: 
         const validators = {
             fullName: (value) => value.trim().length > 2 ? '' : 'ФИО должно содержать минимум 3 символа.',
             phone: (value) => /^\+?[78][-\s(]?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/.test(value) ? '' : 'Введите корректный номер телефона.',
             email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Введите корректный email.'
         };
+        
 
+        // Механизм шаблонных строк - inputElement.id позволяет получить из поля id = {fullName, phone, email}
         const validateInput = (inputElement) => {
             const errorElement = document.getElementById(`${inputElement.id}Error`);
+            // Обращение к конкретному правилу в словаре. Если правила нет, пусть поле будет валидным
             const validator = validators[inputElement.id];
-            if (!validator) return true; // Если валидатора нет, считаем поле валидным
+            if (!validator) return true; 
             
             const errorMessage = validator(inputElement.value);
+            // textContent - это объект span в коде со свойством textContent
             errorElement.textContent = errorMessage;
-            inputElement.classList.toggle('invalid', !!errorMessage); // Добавляем/убираем класс invalid
+            // Этот CSS класс применяется для поля только, когда true на ошибке
+            inputElement.classList.toggle('invalid', !!errorMessage); 
             return !errorMessage;
         };
 
@@ -54,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
         phoneInput.addEventListener('input', () => validateInput(phoneInput));
         emailInput.addEventListener('input', () => validateInput(emailInput));
         
-        // --- ТРЕБОВАНИЕ 2: ОТПРАВКА ДАННЫХ НА СЕРВЕР ---
-        
+
         appointmentForm.addEventListener('submit', function(event) {
+            // отмена стандартного поведения браузера - перехват формы
             event.preventDefault();
             
             // Финальная валидация перед отправкой
@@ -109,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 console.log('Ответ от сервера:', data);
                 alert(`Спасибо, ${appointmentData.fullName}! Ваша запись успешно отправлена.`);
+                // Очистка полей формы и сообщений об ошибках
                 appointmentForm.reset();
-                // Очищаем сообщения об ошибках
                 document.querySelectorAll('.form__error').forEach(el => el.textContent = '');
                 document.querySelectorAll('.form__input.invalid').forEach(el => el.classList.remove('invalid'));
             })
@@ -121,44 +127,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- ТРЕБОВАНИЯ 3 и 4: АСИНХРОННЫЙ ЗАПРОС И ПЕРИОДИЧЕСКОЕ ОБНОВЛЕНИЕ ---
+    // асинхронный запрос и периодическое обновление
     
     const newsContainer = document.getElementById('news-container');
 
-    // Если мы на главной странице, где есть блок для новостей
+    // Если на главной странице, где есть блок для новостей
     if (newsContainer) {
-        const fetchNews = () => {
-            console.log('Запрашиваю новости...');
-            fetch('http://localhost:3000/news')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Ошибка HTTP: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(news => {
-                    newsContainer.innerHTML = ''; // Очищаем старые новости
-                    const newsList = document.createElement('ul');
-                    newsList.className = 'news-list';
 
-                    news.forEach(item => {
-                        const listItem = document.createElement('li');
-                        listItem.className = 'news-list__item';
-                        listItem.textContent = `[${item.date}] ${item.title}`;
-                        newsList.appendChild(listItem);
-                    });
-                    newsContainer.appendChild(newsList);
-                })
-                .catch(error => {
-                    console.error('Не удалось загрузить новости:', error);
-                    newsContainer.innerHTML = '<p class="error-message">Не удалось загрузить новости. Попробуйте обновить страницу.</p>';
-                });
+        // Функция для отрисовки успешного результата
+        function updateNewsList(news) {
+            newsContainer.innerHTML = ''; // очистка старых новостей
+            const newsList = document.createElement('ul');
+            newsList.className = 'news-list';
+
+            news.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'news-list__item';
+                listItem.textContent = `[${item.date}] ${item.title}`;
+                newsList.appendChild(listItem);
+            });
+            newsContainer.appendChild(newsList);
+        }
+
+        // вывод ошибки
+        function showNewsError(error) {
+            console.error('Не удалось загрузить новости:', error);
+            newsContainer.innerHTML = '<p class.="error-message">Не удалось загрузить новости. Попробуйте обновить страницу.</p>';
+        }
+        
+        const fetchNews = async () => {
+            console.log('Запрашиваю новости...');
+            try {
+                const response = await fetch('http://localhost:3000/news');
+
+                if (!response.ok) {
+                    throw new Error(`Ошибка HTTP: ${response.status}`);
+                }
+
+                const news = await response.json();
+                updateNewsList(news);
+
+            } catch (error) {
+                showNewsError(error);
+            }
         };
 
-        // Первичная загрузка новостей
-        fetchNews();
-
-        // Устанавливаем периодическое обновление каждые 5 минут (300 000 миллисекунд)
-        setInterval(fetchNews, 300000);
+        // --- Запуск периодического обновления ---
+        fetchNews(); // Первичная загрузка новостей
+        setInterval(fetchNews, 25000); // Обновление каждые 25 секунд
     }
 });
