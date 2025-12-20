@@ -465,3 +465,17 @@ body {
     color: #e74c3c;
     text-align: center;
 }
+
+
+
+.form__input.invalid {
+    border-color: #e74c3c; /* Красная рамка */
+}
+
+.form__error { /* У вас в HTML опечатка form_error, исправьте на form__error */
+    color: #e74c3c;
+    font-size: 0.85rem;
+    display: block; /* Чтобы span занимал свою строку */
+    height: 1rem; /* Резервируем место, чтобы форма не "прыгала" */
+    margin-top: 4px;
+}
